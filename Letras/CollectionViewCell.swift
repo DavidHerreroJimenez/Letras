@@ -8,5 +8,12 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellButton: UIButton!
     
+    override func awakeFromNib() {
+       super.awakeFromNib()
+       //custom logic goes here
+    }
+    
+
+    
     
 }

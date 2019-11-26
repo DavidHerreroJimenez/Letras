@@ -14,6 +14,7 @@
 		441D76D7238BEAB900B3F875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441D76D6238BEAB900B3F875 /* Assets.xcassets */; };
 		441D76DA238BEABA00B3F875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 441D76D8238BEABA00B3F875 /* LaunchScreen.storyboard */; };
 		441D76E2238BEE1900B3F875 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */; };
+		4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		441D76D9238BEABA00B3F875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		441D76DB238BEABA00B3F875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				441D76D8238BEABA00B3F875 /* LaunchScreen.storyboard */,
 				441D76DB238BEABA00B3F875 /* Info.plist */,
 				441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */,
+				4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */,
 			);
 			path = Letras;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */,
 				441D76D2238BEAB800B3F875 /* ViewController.swift in Sources */,
 				441D76CE238BEAB800B3F875 /* AppDelegate.swift in Sources */,
 				441D76E2238BEE1900B3F875 /* CollectionViewCell.swift in Sources */,
