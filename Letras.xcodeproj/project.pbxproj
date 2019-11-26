@@ -15,6 +15,9 @@
 		441D76DA238BEABA00B3F875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 441D76D8238BEABA00B3F875 /* LaunchScreen.storyboard */; };
 		441D76E2238BEE1900B3F875 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */; };
 		4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */; };
+		7CD69A2B238DCEEB0060CDFA /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */; };
+		7CD69A2D238DDF410060CDFA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2C238DDF410060CDFA /* CustomLabel.swift */; };
+		7CD69A2F238DE61A0060CDFA /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		441D76DB238BEABA00B3F875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellResult.swift; sourceTree = "<group>"; };
+		7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		7CD69A2C238DDF410060CDFA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				441D76DB238BEABA00B3F875 /* Info.plist */,
 				441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */,
 				4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */,
+				7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */,
+				7CD69A2C238DDF410060CDFA /* CustomLabel.swift */,
+				7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */,
 			);
 			path = Letras;
 			sourceTree = "<group>";
@@ -144,10 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD69A2B238DCEEB0060CDFA /* RoundButton.swift in Sources */,
 				4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */,
 				441D76D2238BEAB800B3F875 /* ViewController.swift in Sources */,
+				7CD69A2D238DDF410060CDFA /* CustomLabel.swift in Sources */,
 				441D76CE238BEAB800B3F875 /* AppDelegate.swift in Sources */,
 				441D76E2238BEE1900B3F875 /* CollectionViewCell.swift in Sources */,
+				7CD69A2F238DE61A0060CDFA /* CustomTableView.swift in Sources */,
 				441D76D0238BEAB800B3F875 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

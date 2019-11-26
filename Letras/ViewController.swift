@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var collectionView: UICollectionView?
     
+    
     var timer: Timer?
     
     @IBOutlet weak var myWordLabel: UILabel!
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         cell.cellButton.layer.cornerRadius = 5
         cell.cellButton.layer.borderWidth = 1
-        cell.cellButton.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        cell.cellButton.layer.borderColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
         
         return cell
     }
@@ -51,7 +52,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func cellButtonClick(_ sender: UIButton) {
 
-        sender.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        sender.backgroundColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
         sender.isSelected = true
         sender.isEnabled = false
         
@@ -117,6 +118,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                     resultMessageLabel.text = "Palabra correcta!"
                     
+                    resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
+                    
                     self.tableViewResults.reloadData()
                     
                     
@@ -125,6 +128,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                 }else{
                     resultMessageLabel.text = "mmm...\nlo siento, no es una palabra...\n¡sigue probando!"
+                    
+                    resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
                 }
                 
             }
@@ -206,6 +211,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Do any additional setup after loading the view.
         
         myWordLabel.text = selectedLetter
+        
+        self.tableViewResults.backgroundColor = #colorLiteral(red: 1, green: 0.4512977004, blue: 0.472446382, alpha: 1)
     }
     
 
