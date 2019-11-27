@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (5.0.0.beta.1)
+  - PromisedFuture (1.0.1)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - PromisedFuture
+
+SPEC REPOS:
+  trunk:
+    - PromisedFuture
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: alamofire5
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 2c99a6691dac40f03ef9f9e89aaf2eb751843393
+    :git: https://github.com/Alamofire/Alamofire.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  PromisedFuture: 3f863d17c047c3474c85045b254bb1c94743ed0f
+
+PODFILE CHECKSUM: 90d748f7d7a86bfd986c60973a06b5bb795b577a
+
+COCOAPODS: 1.8.4

@@ -10,7 +10,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     var time: Int = 0
-    let maxTimeInSeconds: Int = 59
+    let maxTimeInSeconds: Int = 10
     let minTimeInSeconds: Int = 0
     var selectedLetter = ""
     var lastCharToRemove: String = ""
@@ -26,6 +26,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var resultMessageLabel: UILabel!
     @IBOutlet weak var tableViewResults: UITableView!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var newGameBtn: RoundButton!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -115,26 +116,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let wordToCheck =  wordLabel.text{
             if (!wordToCheck.isEmpty){
                 
-                if (wordToCheck.uppercased() == "china".uppercased()){
-                        
-                    
-                    wordResults.append(wordToCheck)
-                    
-                    resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
-                    resultMessageLabel.text = "Palabra correcta!"
+                let apiClient: APIClient = APIClient()
+                 
+                 apiClient.checkWord(word: wordToCheck, completion: { result in
+                     
+                     print("my result is: \(result)")
                     
                     
-                    
-                    self.tableViewResults.reloadData()
-                    
-                    
-                    resetAllButtons()
-                    clearData()
-                    
-                }else{
-                    resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
-                    resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
-                }
+                    if (result){
+                        self.wordResults.append(wordToCheck)
+                        self.resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
+                        self.resultMessageLabel.text = "Palabra correcta!"
+                        self.tableViewResults.reloadData()
+                        self.resetAllButtons()
+                        self.clearData()
+                                      
+                    }else{
+                        self.resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
+                        self.resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
+                    }
+                 })
                 
             }
         }
@@ -159,6 +160,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //
 //
 //        for (cell in collectionView.numberOfItems)
+        
+        sender.isEnabled = false
         
         resetAllButtons()
         clearData()
@@ -199,6 +202,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
             resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
             resultMessageLabel.text = "Vaya...\n...parece que se te ha acabado el tiempo..."
+            
+            newGameBtn.isEnabled = true
         }
     }
     
@@ -251,12 +256,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dateFormatterPrint.dateFormat = "mm:ss"
 
         if let date = dateFormatterGet.date(from: String(timeToTimer)) {
-            print(dateFormatterPrint.string(from: date))
-            
             return dateFormatterPrint.string(from: date)
         } else {
            print("There was an error decoding the string")
-            
             return "00:00"
         }
         
