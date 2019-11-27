@@ -10,7 +10,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     var time: Int = 0
-    let maxTimeInSeconds: Int = 10
+    let maxTimeInSeconds: Int = 59
     let minTimeInSeconds: Int = 0
     var selectedLetter = ""
     var lastCharToRemove: String = ""
@@ -29,6 +29,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var tableViewResults: UITableView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var newGameBtn: RoundButton!
+    @IBOutlet weak var deleteCharBtn: RoundButton!
+    @IBOutlet weak var checkWordBtn: RoundButton!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -42,11 +44,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
-        
         cell.cellButton.setTitle(letters[indexPath.row], for: .normal)
         
         cell.cellButton.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.cellButton.isSelected = false
+        cell.cellButton.isEnabled = false
         
         cell.cellButton.layer.cornerRadius = 5
         cell.cellButton.layer.borderWidth = 1
@@ -151,10 +153,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBAction func newGameButtonClick(_ sender: UIButton) {
     
-        sender.isEnabled = false
-        
         resetClickedButtons()
-        enableAllButtons()
+        enableAllButtonCells()
         clearData()
         
         resultMessageLabel.text = ""
@@ -179,6 +179,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         timer = Timer.init() //INICIALIZA EL OBJECTO
         
         self.tableViewResults.reloadData()
+        
+        prepareGameBtnsToPlay()
     }
     
 
@@ -194,9 +196,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
             resultMessageLabel.text = "Vaya...\n...parece que se te ha acabado el tiempo..."
             
-            newGameBtn.isEnabled = true
+            prepareGameBtnsBeforePlay()
             
-            disableAllButtons()
+            disableAllButtonCells()
         }
     }
     
@@ -233,7 +235,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func disableAllButtons(){
+    func disableAllButtonCells(){
         
         for button in  allButtons {
             
@@ -245,7 +247,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    func enableAllButtons(){
+    func enableAllButtonCells(){
         
         for button in  allButtons {
             
@@ -281,6 +283,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    func prepareGameBtnsBeforePlay(){
+        
+        deleteCharBtn.isEnabled = false
+        checkWordBtn.isEnabled = false
+        newGameBtn.isEnabled = true
+    }
+    
+    func prepareGameBtnsToPlay(){
+        
+        newGameBtn.isEnabled = false
+        deleteCharBtn.isEnabled = true
+        checkWordBtn.isEnabled = true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -289,7 +305,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         self.tableViewResults.backgroundColor = #colorLiteral(red: 1, green: 0.4512977004, blue: 0.472446382, alpha: 1)
         
-        disableAllButtons()
+        prepareGameBtnsBeforePlay()
+        
     }
     
 
