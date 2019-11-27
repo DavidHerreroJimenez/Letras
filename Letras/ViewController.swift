@@ -172,20 +172,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //
 //
 //        for (cell in collectionView.numberOfItems)
+        
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire), userInfo: nil, repeats: true)
+        
+        
+        
+        
+//            timer = Timer.init() //INICIALIZA EL OBJECTO
+//            timer.isValid // COMPRUEBA SI EL TIMER ESTA INICIALIZADO
+//            timer.invalidate() //NOS CANCELA EL TIMER
+//
+
     
     }
     
+    @objc func fire(){
+        
+          print("new game timer")
+    }
+    
  
-    //    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire), userInfo: nil, repeats: true)
-    //
-    //
-    //    timer = Timer.init() //INICIALIZA EL OBJECTO
-    //    timer.isValid // COMPRUEBA SI EL TIMER ESTA INICIALIZADO
-    //    timer.invalidate() //NOS CANCELA EL TIMER
-    //
-    //    @objc func fire(){
-    //        //CODe
-    //    }
+
     
     
     
