@@ -9,6 +9,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var letters = ["A", "B", "C", "F", "G", "H", "I", "N"]
     
     
+    var time: Int = 0
+    let maxTimeInSeconds: Int = 59
+    let minTimeInSeconds: Int = 0
     var selectedLetter = ""
     var lastCharToRemove: String = ""
     var buttonsClicked: [UIButton] = []
@@ -19,9 +22,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var timer: Timer?
     
-    @IBOutlet weak var myWordLabel: UILabel!
+    @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var resultMessageLabel: UILabel!
     @IBOutlet weak var tableViewResults: UITableView!
+    @IBOutlet weak var timerLabel: UILabel!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -65,14 +69,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         
-        if myWordLabel.text != nil {
+        if wordLabel.text != nil {
             
-            myWordLabel.text! += selectedLetter
+            wordLabel.text! += selectedLetter
             
         }else{
-            myWordLabel.text = ""
+            wordLabel.text = ""
             
-            myWordLabel.text! += selectedLetter
+            wordLabel.text! += selectedLetter
         }
         
         buttonsClicked.append(sender)
@@ -82,9 +86,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func deleteCharClick(_ sender: UIButton) {
         
-        if myWordLabel.text != nil && !myWordLabel.text!.isEmpty {
+        if wordLabel.text != nil && !wordLabel.text!.isEmpty {
             
-            lastCharToRemove = String(myWordLabel.text?.last ?? " ")
+            lastCharToRemove = String(wordLabel.text?.last ?? " ")
             
             /*
              collectionView.numberOfItems(inSection: 0)
@@ -100,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             buttonsClicked.removeLast()
 
-            myWordLabel.text?.removeLast()
+            wordLabel.text?.removeLast()
         }
         
     }
@@ -108,7 +112,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func checkWordClick(_ sender: UIButton) {
         
-        if let wordToCheck =  myWordLabel.text{
+        if let wordToCheck =  wordLabel.text{
             if (!wordToCheck.isEmpty){
                 
                 if (wordToCheck.uppercased() == "china".uppercased()){
@@ -116,9 +120,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                     wordResults.append(wordToCheck)
                     
+                    resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
                     resultMessageLabel.text = "Palabra correcta!"
                     
-                    resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
+                    
                     
                     self.tableViewResults.reloadData()
                     
@@ -127,33 +132,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     clearData()
                     
                 }else{
-                    resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
-                    
                     resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
+                    resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
                 }
                 
             }
         }
     }
     
-    func resetAllButtons(){
-        
-        for button in buttonsClicked {
-            
-            button.isSelected = false
-            button.isEnabled = true
-            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        }
-    }
-    
-    func clearData(){
-        
-        buttonsClicked.removeAll()
 
-        myWordLabel.text?.removeAll()
-        
-    }
     
     
 
@@ -173,23 +160,46 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //
 //        for (cell in collectionView.numberOfItems)
         
+        resetAllButtons()
+        clearData()
+        
+        resultMessageLabel.text = ""
+        wordResults.removeAll()
+        
+        time = maxTimeInSeconds
+        
+        timerLabel.text = formatTimeToTimer(time: time)
+        
+        
+        
+        if (timer?.isValid ?? false){
+                  print("error: old timer is valid!!")
+            
+            timer?.invalidate() //NOS CANCELA EL TIMER
+        }
+              
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire), userInfo: nil, repeats: true)
         
         
+        timer = Timer.init() //INICIALIZA EL OBJECTO
         
-        
-//            timer = Timer.init() //INICIALIZA EL OBJECTO
-//            timer.isValid // COMPRUEBA SI EL TIMER ESTA INICIALIZADO
-//            timer.invalidate() //NOS CANCELA EL TIMER
-//
-
-    
+        self.tableViewResults.reloadData()
     }
     
-    @objc func fire(){
+
+    
+    @objc func fire(timer: Timer){
         
-          print("new game timer")
+        if (time > minTimeInSeconds){
+            time-=1
+            timerLabel.text = formatTimeToTimer(time: time)
+        }else{
+            timer.invalidate() //NOS CANCELA EL TIMER
+
+            resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
+            resultMessageLabel.text = "Vaya...\n...parece que se te ha acabado el tiempo..."
+        }
     }
     
  
@@ -214,11 +224,50 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
+    func resetAllButtons(){
+        
+        for button in buttonsClicked {
+            
+            button.isSelected = false
+            button.isEnabled = true
+            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        }
+    }
+    
+    func clearData(){
+        
+        buttonsClicked.removeAll()
+
+        wordLabel.text?.removeAll()
+        
+    }
+    
+    func formatTimeToTimer(time timeToTimer: Int) -> String{
+        
+        let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "ss"
+        let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "mm:ss"
+
+        if let date = dateFormatterGet.date(from: String(timeToTimer)) {
+            print(dateFormatterPrint.string(from: date))
+            
+            return dateFormatterPrint.string(from: date)
+        } else {
+           print("There was an error decoding the string")
+            
+            return "00:00"
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        myWordLabel.text = selectedLetter
+        wordLabel.text = selectedLetter
         
         self.tableViewResults.backgroundColor = #colorLiteral(red: 1, green: 0.4512977004, blue: 0.472446382, alpha: 1)
     }
