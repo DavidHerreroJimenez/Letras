@@ -127,7 +127,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     clearData()
                     
                 }else{
-                    resultMessageLabel.text = "mmm...\nlo siento, no es una palabra...\n¡sigue probando!"
+                    resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
                     
                     resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
                 }

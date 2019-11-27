@@ -115,7 +115,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Djy-P2-SjG" userLabel="WordView">
-                                <rect key="frame" x="15" y="304" width="384" height="100"/>
+                                <rect key="frame" x="15" y="304" width="384" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyWord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ety-IH-hVE">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="70"/>
@@ -128,11 +128,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDo-q0-k2K" customClass="RoundButton" customModule="Letras" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="384" height="28"/>
+                                        <rect key="frame" x="0.0" y="72" width="384" height="48"/>
                                         <color key="backgroundColor" red="0.31372549019607843" green="0.61176470588235299" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="8vj-Jc-I11"/>
-                                            <constraint firstAttribute="height" constant="28" id="Q2H-Fn-S2L"/>
+                                            <constraint firstAttribute="height" constant="48" id="8vj-Jc-I11"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                         <color key="tintColor" red="0.30980392156862746" green="0.5490196078431373" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,17 +153,18 @@
                                     <constraint firstItem="ZDo-q0-k2K" firstAttribute="top" secondItem="ety-IH-hVE" secondAttribute="bottom" constant="2" id="AXA-oS-ZP8"/>
                                     <constraint firstAttribute="trailing" secondItem="ZDo-q0-k2K" secondAttribute="trailing" id="EKg-rg-lOz"/>
                                     <constraint firstItem="ety-IH-hVE" firstAttribute="top" secondItem="Djy-P2-SjG" secondAttribute="top" id="Jhf-IP-MZR"/>
-                                    <constraint firstAttribute="height" constant="100" id="XZq-1m-tvC"/>
+                                    <constraint firstAttribute="height" constant="120" id="XZq-1m-tvC"/>
                                     <constraint firstItem="ety-IH-hVE" firstAttribute="leading" secondItem="Djy-P2-SjG" secondAttribute="leading" id="t9t-E5-PZ5"/>
                                     <constraint firstAttribute="trailing" secondItem="ety-IH-hVE" secondAttribute="trailing" id="xy1-Jh-u54"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl1-bM-JPc" customClass="CustomLabel" customModule="Letras" customModuleProvider="target">
-                                <rect key="frame" x="15" y="409" width="384" height="60"/>
+                                <rect key="frame" x="15" y="429" width="384" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DNK-q8-GZd"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.70196078429999997" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -199,7 +199,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GDM-QH-8DO" customClass="CustomTableView" customModule="Letras" customModuleProvider="target">
-                                <rect key="frame" x="15" y="474" width="384" height="388"/>
+                                <rect key="frame" x="15" y="494" width="384" height="368"/>
                                 <color key="backgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
