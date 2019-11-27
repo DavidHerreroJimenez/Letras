@@ -18,9 +18,12 @@
 		7CD69A2B238DCEEB0060CDFA /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */; };
 		7CD69A2D238DDF410060CDFA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2C238DDF410060CDFA /* CustomLabel.swift */; };
 		7CD69A2F238DE61A0060CDFA /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */; };
+		8C5A9DEFCB0EE2F8690FA1AD /* Pods_Letras.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CD882A64017CB1893EFD33 /* Pods_Letras.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04CD882A64017CB1893EFD33 /* Pods_Letras.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letras.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B3E3E7EC63D777746E7EF68 /* Pods-Letras.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letras.debug.xcconfig"; path = "Target Support Files/Pods-Letras/Pods-Letras.debug.xcconfig"; sourceTree = "<group>"; };
 		441D76CA238BEAB800B3F875 /* Letras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441D76CD238BEAB800B3F875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		441D76CF238BEAB800B3F875 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		7CD69A2C238DDF410060CDFA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		EEE6527DA20575895F0D8143 /* Pods-Letras.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letras.release.xcconfig"; path = "Target Support Files/Pods-Letras/Pods-Letras.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5A9DEFCB0EE2F8690FA1AD /* Pods_Letras.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7560358569BECD66BBEF98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04CD882A64017CB1893EFD33 /* Pods_Letras.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		441D76C1238BEAB800B3F875 = {
 			isa = PBXGroup;
 			children = (
 				441D76CC238BEAB800B3F875 /* Letras */,
 				441D76CB238BEAB800B3F875 /* Products */,
+				C08EA6AB091B4BB3F84EDE74 /* Pods */,
+				0B7560358569BECD66BBEF98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +97,16 @@
 			path = Letras;
 			sourceTree = "<group>";
 		};
+		C08EA6AB091B4BB3F84EDE74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0B3E3E7EC63D777746E7EF68 /* Pods-Letras.debug.xcconfig */,
+				EEE6527DA20575895F0D8143 /* Pods-Letras.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +114,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 441D76DE238BEABA00B3F875 /* Build configuration list for PBXNativeTarget "Letras" */;
 			buildPhases = (
+				1D0F60CDE527202B5FC125A7 /* [CP] Check Pods Manifest.lock */,
 				441D76C6238BEAB800B3F875 /* Sources */,
 				441D76C7238BEAB800B3F875 /* Frameworks */,
 				441D76C8238BEAB800B3F875 /* Resources */,
+				853B5C8F0489A7625E3585F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +174,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D0F60CDE527202B5FC125A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Letras-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		853B5C8F0489A7625E3585F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letras/Pods-Letras-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letras/Pods-Letras-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Letras/Pods-Letras-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		441D76C6238BEAB800B3F875 /* Sources */ = {
@@ -302,6 +371,7 @@
 		};
 		441D76DF238BEABA00B3F875 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B3E3E7EC63D777746E7EF68 /* Pods-Letras.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -320,6 +390,7 @@
 		};
 		441D76E0238BEABA00B3F875 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEE6527DA20575895F0D8143 /* Pods-Letras.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
