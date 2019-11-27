@@ -274,6 +274,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="newGameBtn" destination="FqA-pu-PRW" id="ww7-g1-0NG"/>
                         <outlet property="resultMessageLabel" destination="Gl1-bM-JPc" id="5E2-Lo-tYD"/>
                         <outlet property="tableViewResults" destination="GDM-QH-8DO" id="Y7J-QW-xgY"/>
                         <outlet property="timerLabel" destination="SwC-6W-rbY" id="EtJ-4G-sEV"/>
