@@ -10,7 +10,7 @@ class APIClient{
         
         print(word)
         
-        var url = "https://store.apicultur.com/api/corrige-palabra/1.0.0/" + word
+        let url = "https://store.apicultur.com/api/corrige-palabra/1.0.0/" + word
         let headers: HTTPHeaders = [
                 "Authorization": "Bearer uHS_7Q2Esg7XsUKNsaqFx2sB1mca",
                 "Accept": "application/json"]
