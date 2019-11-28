@@ -120,7 +120,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func checkWordClick(_ sender: UIButton) {
         
         if let wordToCheck =  wordLabel.text{
-            if (!wordToCheck.isEmpty){
+            //if (!wordToCheck.isEmpty){
                 
                 let apiClient: APIClient = APIClient()
                  
@@ -143,7 +143,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     }
                  })
                 
-            }
+            //}
         }
     }
     
