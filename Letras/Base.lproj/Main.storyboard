@@ -358,6 +358,7 @@
                         <outlet property="bonusTimeLabel1" destination="nR0-sZ-Hdc" id="3Pu-Y1-FdR"/>
                         <outlet property="bonusTimeLabel2" destination="Dsf-G8-kcv" id="7wS-85-vPy"/>
                         <outlet property="checkWordBtn" destination="ZDo-q0-k2K" id="KWu-6D-tsX"/>
+                        <outlet property="collectionViewLetters" destination="poB-9k-h2k" id="l1m-KX-yPA"/>
                         <outlet property="deleteCharBtn" destination="ht0-ZK-Wy9" id="D6E-Ny-vDr"/>
                         <outlet property="newGameBtn" destination="FqA-pu-PRW" id="ww7-g1-0NG"/>
                         <outlet property="resultMessageLabel" destination="Gl1-bM-JPc" id="5E2-Lo-tYD"/>

@@ -6,11 +6,15 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
-    var letters = ["A", "B", "C", "F", "G", "H", "I", "N"]
+    let vowels = ["A", "E", "I", "O", "U"]
+    let consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "Ñ", "P", "Q", "R", "S", "T", "V", "W", "Y", "Z"]
+    
+    var letters: [String] = []
+    
     
     
     var time: Int = 0
-    let maxTimeInSeconds: Int = 59
+    let maxTimeInSeconds: Int = 10
     let minTimeInSeconds: Int = 0
     
     var bonusTime: Int = 0
@@ -27,9 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var wordResults: [String] = []
     var wordPointsResult: [Int] = []
     
-    
-    var collectionView: UICollectionView?
-    
+    @IBOutlet weak var collectionViewLetters: UICollectionView!
     
     var timer: Timer?
     var bonusTimer: Timer?
@@ -46,10 +48,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var bonusTimeLabel1: UILabel!
     @IBOutlet weak var bonusTimeLabel2: UILabel!
     
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        self.collectionView = collectionView
+        //self.collectionViewLetters = collectionView
         
         return letters.count
     }
@@ -207,6 +210,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 //MARK: New Game
     @IBAction func newGameButtonClick(_ sender: UIButton) {
+        
+
+     
         resetClickedButtons()
         enableAllButtonCells()
         clearData()
@@ -247,7 +253,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         prepareGameBtnsToPlay()
         
         
-
     }
     
     func resetCurrentBonus(){
@@ -276,7 +281,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             disableAllButtonCells()
             
+            letters = getRandomLetters()
+            collectionViewLetters!.reloadData()
+            
             UIHelper.showToast(controller: self, message: "...parece que se te ha acabado el tiempo...\nprueba otra vez, o no.", seconds: 2)
+            
+            
         }
     }
     
@@ -446,9 +456,42 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return result
     }
     
+    
+    func getRandomLetters() -> [String]{
+        
+        var resultArray: [String] = []
+        
+        var vowel = ""
+        var consonant = ""
+        
+        while resultArray.count < 10{
+            
+            vowel = vowels.randomElement()!
+            consonant = consonants.randomElement()!
+            
+            if (!resultArray.contains(vowel)){
+                
+                 resultArray.append(vowel)
+                
+            }
+            
+            if (!resultArray.contains(consonant)){
+                
+                resultArray.append(consonant)
+                
+            }
+           
+        }
+        
+        return resultArray
+        
+    }
+    
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        letters = getRandomLetters()
         
         wordLabel.text = selectedLetter
         
