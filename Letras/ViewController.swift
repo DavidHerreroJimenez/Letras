@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     var time: Int = 0
-    let maxTimeInSeconds: Int = 10
+    let maxTimeInSeconds: Int = 40
     let minTimeInSeconds: Int = 0
     
     var bonusTime: Int = 0
@@ -28,8 +28,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var lastCharToRemove: String = ""
     var buttonsClicked: [UIButton] = []
     var allButtons: [UIButton] = []
-    var wordResults: [String] = []
-    var wordPointsResult: [Int] = []
+    var wordResults: [WordResult] = []
+    //var wordPointsResult: [Int] = []
     
     @IBOutlet weak var collectionViewLetters: UICollectionView!
     
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var bonusTimeLabel2: UILabel!
     
 
-    
+    //MARK: Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //self.collectionViewLetters = collectionView
@@ -78,7 +78,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
 
-    
+    //MARK: Cell button
     @IBAction func cellButtonClick(_ sender: UIButton) {
 
         sender.backgroundColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    
+    // MARK: Delete button
     @IBAction func deleteCharClick(_ sender: UIButton) {
         
         if wordLabel.text != nil && !wordLabel.text!.isEmpty {
@@ -138,7 +138,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func checkWordClick(_ sender: UIButton) {
         
         if let wordToCheck =  wordLabel.text{
-            if (!wordResults.contains(wordToCheck)){
+            
+            var isDuplicated = false
+            
+            for wordResult in wordResults {
+                
+                if ((wordResult.word == wordToCheck)){
+                    
+                    isDuplicated = true
+            
+                }
+                
+            }
+            
+            if (!isDuplicated){
             //if (!wordToCheck.isEmpty){
                 
                 let apiClient: APIClient = APIClient()
@@ -150,9 +163,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let wordPoints = self.calculateScore(word: wordToCheck)
                         
                         print("wordPoints: \(wordPoints)")
-                        
-                        self.wordResults.append(wordToCheck)
-                        self.wordPointsResult.append(wordPoints)
+                        let wordToAppend: WordResult = WordResult(word: wordToCheck, score: wordPoints, bonus: self.currentBonus)
+                        self.wordResults.append(wordToAppend)
+                        //self.wordPointsResult.append(wordPoints)
                         self.resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
                         self.resultMessageLabel.text = "Palabra correcta!"
                         self.tableViewResults.reloadData()
@@ -186,7 +199,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         //reset bonus
                         //reset puntuacion bonus
+                        
+                        if (self.bonusTime > self.minBonusTimeInSeconds){
+                            
+                            for wordToStop in self.wordResults.reversed(){
+                                
+                                if wordToStop.bonus == 1{
+                                    continue
+                                }else{
+                                    self.wordResults.removeLast()
+                                }
+                            }
+                        }
+                        
                         self.cancelBonusTimer()
+                        self.tableViewResults.reloadData()
                         
                     }
                  })
@@ -219,7 +246,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         resultMessageLabel.text = ""
         wordResults.removeAll()
-        wordPointsResult.removeAll()
+        //wordPointsResult.removeAll()
         
         
         totalScore = 0
@@ -281,10 +308,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             disableAllButtonCells()
             
+            UIHelper.showToast(controller: self, message: "...parece que se te ha acabado el tiempo...\nprueba otra vez, o no.", seconds: 2)
+            
             letters = getRandomLetters()
             collectionViewLetters!.reloadData()
-            
-            UIHelper.showToast(controller: self, message: "...parece que se te ha acabado el tiempo...\nprueba otra vez, o no.", seconds: 2)
             
             
         }
@@ -304,8 +331,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let tableCell:TableViewCellResult = tableView.dequeueReusableCell(withIdentifier: "idTableCell", for: indexPath) as! TableViewCellResult
          
-        let word:String = wordResults[indexPath.row]
-        let wordScore: Int = wordPointsResult[indexPath.row]
+        let word:String = wordResults[indexPath.row].word
+        let wordScore: Int = wordResults[indexPath.row].score //wordPointsResult[indexPath.row]
+        
+        if (wordResults[indexPath.row].bonus > 1){
+            tableCell.wordOKLabel.textColor = #colorLiteral(red: 1, green: 0.9959715009, blue: 0.5243856907, alpha: 1)
+            tableCell.wordScoreLabel.textColor = #colorLiteral(red: 1, green: 0.9959715009, blue: 0.5243856907, alpha: 1)
+        }else{
+              tableCell.wordOKLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+              tableCell.wordScoreLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         
         tableCell.wordOKLabel.text = word
         tableCell.wordScoreLabel.text = "+" + String(wordScore)

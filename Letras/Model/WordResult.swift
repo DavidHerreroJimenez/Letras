@@ -12,7 +12,7 @@ struct WordResult{
     
     let word: String
     let score: Int
-    let isBonus: Bool
+    let bonus: Int
     
     
 }
