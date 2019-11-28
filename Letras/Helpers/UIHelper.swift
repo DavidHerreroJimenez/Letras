@@ -8,7 +8,7 @@ import UIKit
 class UIHelper{
     
     static func showToast(controller: UIViewController, message: String, seconds: Double){
-        let alert = UIAlertController(title: "THIS IS MY TITLE TOAST", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Vaya...", message: message, preferredStyle: .alert)
         
         controller.present(alert, animated: true)
         

@@ -135,6 +135,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func checkWordClick(_ sender: UIButton) {
         
         if let wordToCheck =  wordLabel.text{
+            if (!wordResults.contains(wordToCheck)){
             //if (!wordToCheck.isEmpty){
                 
                 let apiClient: APIClient = APIClient()
@@ -187,7 +188,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     }
                  })
                 
+            }else{
+                
+                self.resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
+                self.resultMessageLabel.text = "Vas a tener que hecharle más imaginación..."
+               
+               //reset bonus
+               //reset puntuacion bonus
+               self.cancelBonusTimer()
+                
+            }
             //}
+                
         }
     }
     
@@ -264,7 +276,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             disableAllButtonCells()
             
-            UIHelper.showToast(controller: self, message: "Oohh! The time is up,\ndo you want to play another time??", seconds: 2)
+            UIHelper.showToast(controller: self, message: "...parece que se te ha acabado el tiempo...\nprueba otra vez, o no.", seconds: 2)
         }
     }
     
