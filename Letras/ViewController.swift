@@ -152,7 +152,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 
     @IBAction func newGameButtonClick(_ sender: UIButton) {
-    
         resetClickedButtons()
         enableAllButtonCells()
         clearData()
@@ -161,6 +160,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         wordResults.removeAll()
         
         time = maxTimeInSeconds
+        
+        
         
         timerLabel.text = formatTimeToTimer(time: time)
         
