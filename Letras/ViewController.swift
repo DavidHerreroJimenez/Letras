@@ -43,6 +43,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var checkWordBtn: RoundButton!
     @IBOutlet weak var totalScoreLabel: UILabel!
     @IBOutlet weak var totalWordsLabel: UILabel!
+    @IBOutlet weak var bonusTimeLabel1: UILabel!
+    @IBOutlet weak var bonusTimeLabel2: UILabel!
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,7 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    
+    //MARK: Check Word
     @IBAction func checkWordClick(_ sender: UIButton) {
         
         if let wordToCheck =  wordLabel.text{
@@ -139,12 +141,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                  
                  apiClient.checkWord(word: wordToCheck, completion: { result in
                      
-                     print("my result is: \(result)")
-                    
-                    
                     if (result){
                         
-                        let wordPoints = self.calculatePoints(word: wordToCheck)
+                        let wordPoints = self.calculateScore(word: wordToCheck)
+                        
+                        print("wordPoints: \(wordPoints)")
                         
                         self.wordResults.append(wordToCheck)
                         self.wordPointsResult.append(wordPoints)
@@ -156,6 +157,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         //bonus x2 if word wrote before 4 seconds
                         //reset timer interval
+                        
+                        print("bonusTime: \(self.bonusTime)")
+                        print("minBonusTimeInSeconds: \(self.minBonusTimeInSeconds)")
+                        
+                        if (self.bonusTime > self.minBonusTimeInSeconds){
+                            
+                            print("entra: \(self.currentBonus)")
+                            
+                            self.currentBonus += 1
+                            
+                            print("suma: \(self.currentBonus)")
+                            
+                        }
+                        
+                        
                         self.initBonusTimer()
                         
                         self.totalScore += wordPoints
@@ -177,7 +193,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 
     
-
+//MARK: New Game
     @IBAction func newGameButtonClick(_ sender: UIButton) {
         resetClickedButtons()
         enableAllButtonCells()
@@ -196,7 +212,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         time = maxTimeInSeconds
         
         
-        
+        resetCurrentBonus()
         
         timerLabel.text = formatTimeToTimer(time: time)
         
@@ -222,6 +238,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     }
     
+    func resetCurrentBonus(){
+        
+        currentBonus = 1
+        
+    }
+    
 
     
     @objc func fire(timer: Timer){
@@ -241,6 +263,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             prepareGameBtnsBeforePlay()
             
             disableAllButtonCells()
+            
+            UIHelper.showToast(controller: self, message: "Oohh! The time is up,\ndo you want to play another time??", seconds: 2)
         }
     }
     
@@ -248,7 +272,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
     
-    
+    //MARK: TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return wordResults.count
@@ -346,9 +370,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         checkWordBtn.isEnabled = true
     }
     
+    //MARK: Bonus timer
     func initBonusTimer(){
-        
-        UIHelper.showToast(controller: self, message: "It's BONUS time!", seconds: 2)
         
         bonusTime = maxBonusTimeInSeconds
             
@@ -364,19 +387,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         bonusTimer = Timer.init() //INICIALIZA EL OBJECTO bonusTimer
         
+        bonusTimeLabel1.text = "\u{2B50} BONUS TIME \u{2B50} BONUS TIME \u{2B50} BONUS TIME "
+        bonusTimeLabel2.text = "\u{2B50} BONUS TIME \u{2B50} BONUS TIME \u{2B50} BONUS TIME "
+        
+        
+        
+        bonusTimeLabel1.isHidden = false
+        bonusTimeLabel2.isHidden = false
+        
         
     }
     
     @objc func fireBonus(bonusTimer: Timer){
         
         if (bonusTime > minBonusTimeInSeconds){
-            print(bonusTime)
+            
             bonusTime-=1
             
          }else{
-             bonusTimer.invalidate() //NOS CANCELA EL TIMER
+             bonusTimer.invalidate()
             
-            print("end bonus timer: \(bonusTime)")
+            bonusTimeLabel1.isHidden = true
+            bonusTimeLabel2.isHidden = true
              
          }
     }
@@ -385,9 +417,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         bonusTimer?.invalidate()
         
+        bonusTimeLabel1.isHidden = true
+        bonusTimeLabel2.isHidden = true
+        
+        
     }
     
+    func calculateScore(word: String) -> Int{
+        
+        let result: Int = (word.count * currentBonus)
+        
+        print("calculateScore word: \(word.count)")
+        print("calculateScore bonus: \(currentBonus)")
+        print("calculateScore result: \(result)")
+        
+        return result
+    }
     
+    //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -400,10 +447,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
 
-    func calculatePoints(word: String) -> Int{
-        
-        return word.count * currentBonus
-    }
+
     
 
     

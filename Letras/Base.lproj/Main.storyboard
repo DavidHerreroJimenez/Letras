@@ -16,11 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR0-sZ-Hdc" userLabel="BonusTimeLabel1">
+                                <rect key="frame" x="15" y="44" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.99607843139999996" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="poB-9k-h2k">
-                                <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="120"/>
                                 <color key="backgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="4Bc-jM-Q4P"/>
+                                    <constraint firstAttribute="height" constant="120" id="4Bc-jM-Q4P"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bh8-Jm-oKV">
                                     <size key="itemSize" width="75" height="75"/>
@@ -64,58 +70,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="r4i-L6-Csg"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="28e-a0-Hui" userLabel="GameMenu">
-                                <rect key="frame" x="15" y="249" width="384" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqA-pu-PRW" customClass="RoundButton" customModule="Letras" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                        <color key="backgroundColor" red="0.31372549019607843" green="0.61176470588235299" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
-                                        <state key="normal" title="New Game">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="newGameButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C1w-bP-bXz"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwC-6W-rbY">
-                                        <rect key="frame" x="128" y="0.0" width="128" height="50"/>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht0-ZK-Wy9" customClass="RoundButton" customModule="Letras" customModuleProvider="target">
-                                        <rect key="frame" x="256" y="0.0" width="128" height="50"/>
-                                        <color key="backgroundColor" red="0.31372549019607843" green="0.61176470588235299" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
-                                        <state key="normal" title="Delete char">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="deleteCharClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCU-J8-RvS"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Zyk-Rw-EH1"/>
-                                </constraints>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsf-G8-kcv" userLabel="BonusTimeLabel2">
+                                <rect key="frame" x="15" y="164" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.99607843139999996" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Djy-P2-SjG" userLabel="WordView">
-                                <rect key="frame" x="15" y="304" width="384" height="120"/>
+                                <rect key="frame" x="15" y="224" width="384" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyWord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ety-IH-hVE">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="70"/>
@@ -159,7 +121,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl1-bM-JPc" customClass="CustomLabel" customModule="Letras" customModuleProvider="target">
-                                <rect key="frame" x="15" y="429" width="384" height="60"/>
+                                <rect key="frame" x="15" y="349" width="384" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DNK-q8-GZd"/>
@@ -199,7 +161,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GDM-QH-8DO" customClass="CustomTableView" customModule="Letras" customModuleProvider="target">
-                                <rect key="frame" x="15" y="494" width="384" height="324.5"/>
+                                <rect key="frame" x="15" y="414" width="384" height="404.5"/>
                                 <color key="backgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.70196078429999997" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -305,6 +267,56 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="28e-a0-Hui" userLabel="GameMenu">
+                                <rect key="frame" x="15" y="169" width="384" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqA-pu-PRW" customClass="RoundButton" customModule="Letras" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
+                                        <color key="backgroundColor" red="0.31372549019607843" green="0.61176470588235299" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                                        <state key="normal" title="New Game">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="newGameButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C1w-bP-bXz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwC-6W-rbY">
+                                        <rect key="frame" x="128" y="0.0" width="128" height="50"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht0-ZK-Wy9" customClass="RoundButton" customModule="Letras" customModuleProvider="target">
+                                        <rect key="frame" x="256" y="0.0" width="128" height="50"/>
+                                        <color key="backgroundColor" red="0.31372549019607843" green="0.61176470588235299" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                                        <state key="normal" title="Delete char">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deleteCharClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCU-J8-RvS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Zyk-Rw-EH1"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -315,28 +327,36 @@
                             <constraint firstItem="poB-9k-h2k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4sD-K3-QWi"/>
                             <constraint firstItem="GDM-QH-8DO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Bk8-LN-hYG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cjz-ID-hLM" secondAttribute="bottom" constant="5" id="JEb-dY-fad"/>
+                            <constraint firstItem="nR0-sZ-Hdc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="KpN-eb-uPc"/>
                             <constraint firstItem="GDM-QH-8DO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LCM-cg-Dlu"/>
+                            <constraint firstItem="poB-9k-h2k" firstAttribute="top" secondItem="nR0-sZ-Hdc" secondAttribute="bottom" id="MlX-XY-KJD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Djy-P2-SjG" secondAttribute="trailing" constant="15" id="NYY-Lb-HBF"/>
                             <constraint firstItem="GDM-QH-8DO" firstAttribute="top" secondItem="Gl1-bM-JPc" secondAttribute="bottom" constant="5" id="NmL-uZ-efW"/>
                             <constraint firstItem="Gl1-bM-JPc" firstAttribute="top" secondItem="Djy-P2-SjG" secondAttribute="bottom" constant="5" id="OYa-yQ-qjg"/>
                             <constraint firstItem="cjz-ID-hLM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OfS-wD-S3F"/>
                             <constraint firstItem="Gl1-bM-JPc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="WFH-bv-MMI"/>
-                            <constraint firstItem="poB-9k-h2k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z3J-0v-LiI"/>
+                            <constraint firstItem="nR0-sZ-Hdc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z3o-op-hfl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gl1-bM-JPc" secondAttribute="trailing" constant="15" id="Zem-0M-7ki"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GDM-QH-8DO" secondAttribute="trailing" constant="15" id="d25-Bd-IX1"/>
-                            <constraint firstItem="28e-a0-Hui" firstAttribute="top" secondItem="poB-9k-h2k" secondAttribute="bottom" constant="5" id="dGW-Pg-d2n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nR0-sZ-Hdc" secondAttribute="trailing" constant="15" id="e16-AH-UGX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="28e-a0-Hui" secondAttribute="trailing" constant="15" id="e3e-HZ-KDB"/>
+                            <constraint firstItem="28e-a0-Hui" firstAttribute="top" secondItem="Dsf-G8-kcv" secondAttribute="bottom" constant="5" id="ghU-FZ-GQi"/>
                             <constraint firstItem="cjz-ID-hLM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="gl4-yA-uPh"/>
                             <constraint firstItem="28e-a0-Hui" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hsP-bH-UO8"/>
                             <constraint firstItem="Djy-P2-SjG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="hxs-EW-ql9"/>
+                            <constraint firstItem="Dsf-G8-kcv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="k1f-Kc-YWD"/>
+                            <constraint firstItem="Dsf-G8-kcv" firstAttribute="top" secondItem="poB-9k-h2k" secondAttribute="bottom" id="lJ5-JL-uhS"/>
                             <constraint firstItem="Djy-P2-SjG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rNb-Od-n5S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Djy-P2-SjG" secondAttribute="trailing" constant="15" id="swn-eR-Z07"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cjz-ID-hLM" secondAttribute="trailing" constant="30" id="umT-tc-8lp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dsf-G8-kcv" secondAttribute="trailing" constant="15" id="wHd-YS-VDi"/>
                             <constraint firstItem="cjz-ID-hLM" firstAttribute="top" secondItem="GDM-QH-8DO" secondAttribute="bottom" constant="15" id="zOh-JT-8kD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bonusTimeLabel1" destination="nR0-sZ-Hdc" id="3Pu-Y1-FdR"/>
+                        <outlet property="bonusTimeLabel2" destination="Dsf-G8-kcv" id="7wS-85-vPy"/>
                         <outlet property="checkWordBtn" destination="ZDo-q0-k2K" id="KWu-6D-tsX"/>
                         <outlet property="deleteCharBtn" destination="ht0-ZK-Wy9" id="D6E-Ny-vDr"/>
                         <outlet property="newGameBtn" destination="FqA-pu-PRW" id="ww7-g1-0NG"/>
