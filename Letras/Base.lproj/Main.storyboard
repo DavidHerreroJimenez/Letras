@@ -221,7 +221,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ow-Im-nkl" userLabel="Points">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ow-Im-nkl" userLabel="WordScore">
                                                             <rect key="frame" x="299.5" y="0.0" width="44.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                             <color key="textColor" red="1" green="0.99607843139999996" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -242,7 +242,7 @@
                                         <color key="backgroundColor" red="1" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="wordOKLabel" destination="wTT-oL-baz" id="1oQ-MY-giw"/>
-                                            <outlet property="wordPointsLabel" destination="4Ow-Im-nkl" id="bBz-si-FD5"/>
+                                            <outlet property="wordScoreLabel" destination="4Ow-Im-nkl" id="bBz-si-FD5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -343,6 +343,8 @@
                         <outlet property="resultMessageLabel" destination="Gl1-bM-JPc" id="5E2-Lo-tYD"/>
                         <outlet property="tableViewResults" destination="GDM-QH-8DO" id="Y7J-QW-xgY"/>
                         <outlet property="timerLabel" destination="SwC-6W-rbY" id="EtJ-4G-sEV"/>
+                        <outlet property="totalScoreLabel" destination="Kql-Ae-frI" id="ghx-ia-RHj"/>
+                        <outlet property="totalWordsLabel" destination="HVz-es-6vJ" id="Ipg-rW-V10"/>
                         <outlet property="wordLabel" destination="ety-IH-hVE" id="a1I-Vh-LrV"/>
                     </connections>
                 </viewController>

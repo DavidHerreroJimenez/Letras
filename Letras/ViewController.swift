@@ -18,6 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let minBonusTimeInSeconds: Int = 0
     
     var currentBonus = 1
+    var totalScore = 0
     
     var selectedLetter = ""
     var lastCharToRemove: String = ""
@@ -40,6 +41,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var newGameBtn: RoundButton!
     @IBOutlet weak var deleteCharBtn: RoundButton!
     @IBOutlet weak var checkWordBtn: RoundButton!
+    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var totalWordsLabel: UILabel!
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -154,6 +157,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         //bonus x2 if word wrote before 4 seconds
                         //reset timer interval
                         self.initBonusTimer()
+                        
+                        self.totalScore += wordPoints
                                       
                     }else{
                         self.resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
@@ -182,7 +187,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         wordResults.removeAll()
         wordPointsResult.removeAll()
         
+        
+        totalScore = 0
+        
+        totalScoreLabel.text = "0"
+        totalWordsLabel.text = "0"
+        
         time = maxTimeInSeconds
+        
         
         
         
@@ -205,6 +217,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.tableViewResults.reloadData()
         
         prepareGameBtnsToPlay()
+        
+        
+
     }
     
 
@@ -244,10 +259,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let tableCell:TableViewCellResult = tableView.dequeueReusableCell(withIdentifier: "idTableCell", for: indexPath) as! TableViewCellResult
          
         let word:String = wordResults[indexPath.row]
-        let points: Int = wordPointsResult[indexPath.row]
+        let wordScore: Int = wordPointsResult[indexPath.row]
         
         tableCell.wordOKLabel.text = word
-        tableCell.wordPointsLabel.text = String(points)
+        tableCell.wordScoreLabel.text = "+" + String(wordScore)
+        
+        totalScoreLabel.text = String(totalScore)
+        
+        totalWordsLabel.text = String(wordResults.count)
+        
         
          return tableCell
     }
