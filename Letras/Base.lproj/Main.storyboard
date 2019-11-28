@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -204,31 +204,43 @@
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idTableCell" id="90C-Fa-8eY" userLabel="TableCellResult" customClass="TableViewCellResult" customModule="Letras" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="384" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="384" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="90C-Fa-8eY" id="3Nb-yE-pKA">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTT-oL-baz">
-                                                    <rect key="frame" x="35" y="11.5" width="314" height="20"/>
-                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                                    <color key="textColor" red="0.20392156862745098" green="0.70196078431372544" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="3vV-xt-DC7">
+                                                    <rect key="frame" x="20" y="11" width="344" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTT-oL-baz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                                            <color key="textColor" red="0.20392156862745098" green="0.70196078431372544" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ow-Im-nkl" userLabel="Points">
+                                                            <rect key="frame" x="302" y="0.0" width="42" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wTT-oL-baz" secondAttribute="trailing" constant="15" id="KrI-hS-dwm"/>
-                                                <constraint firstItem="wTT-oL-baz" firstAttribute="leading" secondItem="3Nb-yE-pKA" secondAttribute="leadingMargin" constant="15" id="TXj-AT-hAA"/>
-                                                <constraint firstItem="wTT-oL-baz" firstAttribute="centerX" secondItem="3Nb-yE-pKA" secondAttribute="centerX" id="XYK-4F-qdL"/>
-                                                <constraint firstItem="wTT-oL-baz" firstAttribute="centerY" secondItem="3Nb-yE-pKA" secondAttribute="centerY" id="mPY-s1-qu3"/>
-                                                <constraint firstItem="wTT-oL-baz" firstAttribute="top" secondItem="3Nb-yE-pKA" secondAttribute="topMargin" constant="0.5" id="t2g-BZ-3bL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wTT-oL-baz" secondAttribute="bottom" constant="0.5" id="yYI-KE-ynG"/>
+                                                <constraint firstItem="3vV-xt-DC7" firstAttribute="leading" secondItem="3Nb-yE-pKA" secondAttribute="leadingMargin" id="Gz5-nZ-HAq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3vV-xt-DC7" secondAttribute="trailing" id="IT0-JQ-RgU"/>
+                                                <constraint firstItem="3vV-xt-DC7" firstAttribute="centerY" secondItem="3Nb-yE-pKA" secondAttribute="centerY" id="IeX-bg-KB1"/>
+                                                <constraint firstItem="3vV-xt-DC7" firstAttribute="centerX" secondItem="3Nb-yE-pKA" secondAttribute="centerX" id="J71-Zh-MB5"/>
+                                                <constraint firstItem="3vV-xt-DC7" firstAttribute="top" secondItem="3Nb-yE-pKA" secondAttribute="topMargin" id="wed-Gr-7bb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3vV-xt-DC7" secondAttribute="bottom" id="zjZ-v2-GW2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="wordOKLabel" destination="wTT-oL-baz" id="1oQ-MY-giw"/>
+                                            <outlet property="wordPointsLabel" destination="4Ow-Im-nkl" id="bBz-si-FD5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

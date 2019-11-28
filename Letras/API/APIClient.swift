@@ -15,8 +15,6 @@ class APIClient{
     
     func checkWord(word: String, completion: @escaping(_ result:Bool) -> Void){
         
-        print(word)
-        
         if (validateWord(wordToValidate: word)){
             
             let url = "https://store.apicultur.com/api/corrige-palabra/1.0.0/" + word
@@ -32,13 +30,12 @@ class APIClient{
                 switch(response.result){
                 case .success(let result):
                     
-                    print(result)
                     let arrayResult = result as! NSArray
                     
                     if (arrayResult.count > 0){
-                        let parsed = arrayResult[0] as! NSDictionary
+                        //let parsed = arrayResult[0] as! NSDictionary
                         
-                        print(parsed["palabra_error"] ?? "no value")
+                        //print(parsed["palabra_error"] ?? "no value")
                         completion(false)
                     }else{
                         completion(true)

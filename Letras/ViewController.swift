@@ -12,17 +12,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var time: Int = 0
     let maxTimeInSeconds: Int = 59
     let minTimeInSeconds: Int = 0
+    
+    var bonusTime: Int = 0
+    let maxBonusTimeInSeconds: Int = 4
+    let minBonusTimeInSeconds: Int = 0
+    
+    var currentBonus = 1
+    
     var selectedLetter = ""
     var lastCharToRemove: String = ""
     var buttonsClicked: [UIButton] = []
     var allButtons: [UIButton] = []
     var wordResults: [String] = []
+    var wordPointsResult: [Int] = []
     
     
     var collectionView: UICollectionView?
     
     
     var timer: Timer?
+    var bonusTimer: Timer?
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var resultMessageLabel: UILabel!
@@ -31,6 +40,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var newGameBtn: RoundButton!
     @IBOutlet weak var deleteCharBtn: RoundButton!
     @IBOutlet weak var checkWordBtn: RoundButton!
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -130,16 +140,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                     
                     if (result){
+                        
+                        let wordPoints = self.calculatePoints(word: wordToCheck)
+                        
                         self.wordResults.append(wordToCheck)
+                        self.wordPointsResult.append(wordPoints)
                         self.resultMessageLabel.textColor = #colorLiteral(red: 0, green: 0.7141116858, blue: 0.285058111, alpha: 1)
                         self.resultMessageLabel.text = "Palabra correcta!"
                         self.tableViewResults.reloadData()
                         self.resetClickedButtons()
                         self.clearData()
+                        
+                        //bonus x2 if word wrote before 4 seconds
+                        //reset timer interval
+                        self.initBonusTimer()
                                       
                     }else{
                         self.resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
                         self.resultMessageLabel.text = "Lo siento,\nno es una palabra correcta...\n¡sigue intentándolo!"
+                        
+                        //reset bonus
+                        //reset puntuacion bonus
+                        self.cancelBonusTimer()
+                        
                     }
                  })
                 
@@ -149,7 +172,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 
     
-    
 
     @IBAction func newGameButtonClick(_ sender: UIButton) {
         resetClickedButtons()
@@ -158,6 +180,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         resultMessageLabel.text = ""
         wordResults.removeAll()
+        wordPointsResult.removeAll()
         
         time = maxTimeInSeconds
         
@@ -193,9 +216,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             timerLabel.text = formatTimeToTimer(time: time)
         }else{
             timer.invalidate() //NOS CANCELA EL TIMER
+            
+            cancelBonusTimer()
 
             resultMessageLabel.textColor = #colorLiteral(red: 0.7019607843, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
             resultMessageLabel.text = "Vaya...\n...parece que se te ha acabado el tiempo..."
+            
             
             prepareGameBtnsBeforePlay()
             
@@ -218,8 +244,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let tableCell:TableViewCellResult = tableView.dequeueReusableCell(withIdentifier: "idTableCell", for: indexPath) as! TableViewCellResult
          
         let word:String = wordResults[indexPath.row]
+        let points: Int = wordPointsResult[indexPath.row]
         
         tableCell.wordOKLabel.text = word
+        tableCell.wordPointsLabel.text = String(points)
         
          return tableCell
     }
@@ -298,6 +326,47 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         checkWordBtn.isEnabled = true
     }
     
+    func initBonusTimer(){
+        
+        UIHelper.showToast(controller: self, message: "It's BONUS time!", seconds: 2)
+        
+        bonusTime = maxBonusTimeInSeconds
+            
+        if (bonusTimer?.isValid ?? false){
+                  print("error: old bonusTimer is valid!!")
+            
+            bonusTimer?.invalidate() //NOS CANCELA EL bonusTimer
+        }
+              
+        
+        bonusTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireBonus), userInfo: nil, repeats: true)
+        
+        
+        bonusTimer = Timer.init() //INICIALIZA EL OBJECTO bonusTimer
+        
+        
+    }
+    
+    @objc func fireBonus(bonusTimer: Timer){
+        
+        if (bonusTime > minBonusTimeInSeconds){
+            print(bonusTime)
+            bonusTime-=1
+            
+         }else{
+             bonusTimer.invalidate() //NOS CANCELA EL TIMER
+            
+            print("end bonus timer: \(bonusTime)")
+             
+         }
+    }
+    
+    func cancelBonusTimer(){
+        
+        bonusTimer?.invalidate()
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -311,6 +380,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
 
+    func calculatePoints(word: String) -> Int{
+        
+        return word.count * currentBonus
+    }
+    
+
+    
     
 
 

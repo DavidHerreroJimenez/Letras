@@ -8,6 +8,7 @@ class TableViewCellResult: UITableViewCell {
     
     
     @IBOutlet weak var wordOKLabel: UILabel!
+    @IBOutlet weak var wordPointsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

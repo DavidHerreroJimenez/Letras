@@ -16,6 +16,7 @@
 		441D76E2238BEE1900B3F875 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */; };
 		442DEF4D238E97C5008FA787 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DEF4C238E97C5008FA787 /* APIClient.swift */; };
 		4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */; };
+		44CE21362390008000DD6FB1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE21352390008000DD6FB1 /* UIHelper.swift */; };
 		7CD69A2B238DCEEB0060CDFA /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */; };
 		7CD69A2D238DDF410060CDFA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2C238DDF410060CDFA /* CustomLabel.swift */; };
 		7CD69A2F238DE61A0060CDFA /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */; };
@@ -36,6 +37,7 @@
 		441D76E1238BEE1900B3F875 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		442DEF4C238E97C5008FA787 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4438C97F238D462C000CF0A8 /* TableViewCellResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellResult.swift; sourceTree = "<group>"; };
+		44CE21352390008000DD6FB1 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7CD69A2A238DCEEB0060CDFA /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		7CD69A2C238DDF410060CDFA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		7CD69A2E238DE61A0060CDFA /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		441D76CC238BEAB800B3F875 /* Letras */ = {
 			isa = PBXGroup;
 			children = (
+				44CE21342390006D00DD6FB1 /* Helpers */,
 				442DEF47238E9608008FA787 /* API */,
 				441D76CD238BEAB800B3F875 /* AppDelegate.swift */,
 				441D76CF238BEAB800B3F875 /* SceneDelegate.swift */,
@@ -106,6 +109,14 @@
 				442DEF4C238E97C5008FA787 /* APIClient.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		44CE21342390006D00DD6FB1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				44CE21352390008000DD6FB1 /* UIHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C08EA6AB091B4BB3F84EDE74 /* Pods */ = {
@@ -235,6 +246,7 @@
 				7CD69A2B238DCEEB0060CDFA /* RoundButton.swift in Sources */,
 				4438C980238D462C000CF0A8 /* TableViewCellResult.swift in Sources */,
 				442DEF4D238E97C5008FA787 /* APIClient.swift in Sources */,
+				44CE21362390008000DD6FB1 /* UIHelper.swift in Sources */,
 				441D76D2238BEAB800B3F875 /* ViewController.swift in Sources */,
 				7CD69A2D238DDF410060CDFA /* CustomLabel.swift in Sources */,
 				441D76CE238BEAB800B3F875 /* AppDelegate.swift in Sources */,
