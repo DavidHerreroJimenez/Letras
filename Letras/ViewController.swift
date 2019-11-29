@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     var time: Int = 0
-    let maxTimeInSeconds: Int = 40
+    let maxTimeInSeconds: Int = 59
     let minTimeInSeconds: Int = 0
     
     var bonusTime: Int = 0
