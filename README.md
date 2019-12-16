@@ -1,6 +1,5 @@
 # Letras
 
-
 Letras is an IOS game about words.
 
 *It was develop in Swift 5 with UIKit.*
