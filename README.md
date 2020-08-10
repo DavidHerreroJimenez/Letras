@@ -1,7 +1,7 @@
 # Letras
 *An IOS game about words.*
 
-This app was develop in Swift 5.1 with UIKit.
+This app was developed with Swift 5.1 plus UIKit.
 
 ## Some screenshots:
 
